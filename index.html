@@ -1,0 +1,1520 @@
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="author" content="Vinícius Campitelli, eu@viniciuscampitelli.com">
+
+		<title>Perdendo o medo e aproveitando o máximo do Git | Vinícius Campitelli</title>
+
+		<link rel="stylesheet" href="reveal.js/dist/reset.css">
+		<link rel="stylesheet" href="reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="reveal.js/dist/theme/black.css">
+
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/dracula.min.css"
+              integrity="sha512-zKpFlhUX8c+WC6H/XTJavnEpWFt2zH9BU9vu0Hry5Y+SEgG21pRMFcecS7DgDXIegXBQ3uK9puwWPP3h6WSR9g=="
+              crossorigin="anonymous" referrerpolicy="no-referrer">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10..0,100..900&family=JetBrains+Mono&display=swap">
+        <link rel="stylesheet" href="css/app.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section class="first-slide">
+		            <h1>Perdendo o medo e aproveitando o máximo do Git</h1>
+                    <h2>Vinícius Campitelli</h2>
+                </section>
+
+                <section> <!-- Sobre -->
+                    <section data-auto-animate data-auto-animate-restart>
+                        <h1>Sobre</h1>
+                    </section>
+                    <section data-auto-animate>
+                        <h1>Sobre</h1>
+                        <div id="about-me">
+                            <div class="text-center">
+                                <img src="img/profile.jpg" alt="Vinícius Campitelli" id="profile-pic">
+                            </div>
+                            <ul>
+                                <li>
+                                    Membro do <a href="https://phpsp.org.br" target="_blank" rel="noopener">PHPSP</a>
+                                </li>
+                                <li>Desenvolvedor há mais de 15 anos</li>
+                                <li>Entusiasta em cibersegurança</li>
+                                <li>Consultor de TI e instrutor de treinamentos</li>
+                            </ul>
+                            <div class="fw-bold text-center">Vinícius<br>Campitelli</div>
+                        </div>
+                        <div>
+                            <div class="about-me-links">
+                                <div>
+                                    <svg role="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M15.3222 10.383C15.3796 10.9457 15.4125 11.4903 15.4125 12C15.4125 12.9541 15.2972 14.0315 15.1208 15.1208C14.0315 15.2972 12.9541 15.4125 12 15.4125C11.0502 15.4125 9.97313 15.2975 8.87911 15.1205C8.70281 14.0312 8.5875 12.954 8.5875 12C8.5875 11.4905 8.62039 10.9458 8.67789 10.383C9.82608 10.5668 10.9715 10.6875 12 10.6875C13.0286 10.6875 14.174 10.5668 15.3222 10.383Z"
+                                              class="fill"/>
+                                        <path d="M16.8752 10.0994C16.9462 10.7579 16.9875 11.399 16.9875 12C16.9875 12.8769 16.8997 13.8389 16.7599 14.8153C18.7425 14.4016 20.575 13.8731 21.5567 13.5722C21.8739 13.475 21.9986 13.4363 22.1658 13.3694C22.2494 13.336 22.326 13.302 22.4259 13.2543C22.4748 12.843 22.5 12.4244 22.5 12C22.5 10.878 22.324 9.79714 21.9982 8.78346L21.9133 8.81017C20.8868 9.12245 18.9652 9.6745 16.8752 10.0994Z"
+                                              class="fill"/>
+                                        <path d="M21.4017 7.31948C20.3698 7.63221 18.579 8.14039 16.6599 8.53603C16.2178 5.84926 15.443 3.16951 15.0702 1.95598C17.8422 2.80227 20.1273 4.76467 21.4017 7.31948Z"
+                                              class="fill"/>
+                                        <path d="M15.1117 8.82229C14.0253 8.99781 12.9513 9.1125 12 9.1125C11.0487 9.1125 9.97477 8.99781 8.88843 8.8223C9.30471 6.28005 10.0478 3.68306 10.4278 2.44333C10.525 2.12606 10.5637 2.00144 10.6306 1.83418C10.664 1.75062 10.698 1.67398 10.7457 1.57414C11.157 1.52518 11.5756 1.5 12 1.5C12.4434 1.5 12.8803 1.52748 13.3093 1.58083C13.3184 1.61564 13.3268 1.64679 13.3351 1.67626C13.3597 1.76333 13.3982 1.8857 13.4628 2.09104L13.4696 2.11261C13.7935 3.14223 14.6519 6.01401 15.1117 8.82229Z"
+                                              class="fill"/>
+                                        <path d="M7.34004 8.536C7.7801 5.86107 8.54986 3.19576 8.92192 1.98181L8.92983 1.95597C6.15777 2.80225 3.8727 4.76465 2.59835 7.31946C3.63018 7.63219 5.42095 8.14036 7.34004 8.536Z"
+                                              class="fill"/>
+                                        <path d="M2.00184 8.78345C1.67598 9.79714 1.5 10.878 1.5 12C1.5 12.4389 1.52693 12.8715 1.57923 13.2963L1.74471 13.3515L1.74603 13.3519L1.74765 13.3525L1.74879 13.3528C1.80205 13.3705 3.36305 13.886 5.41878 14.3975C5.99886 14.5418 6.61307 14.6844 7.24006 14.8151C7.10025 13.8388 7.0125 12.8769 7.0125 12C7.0125 11.3988 7.05374 10.7577 7.12472 10.0994C5.03428 9.67436 3.11218 9.12212 2.08597 8.80989L2.07883 8.80771L2.00184 8.78345Z"
+                                              class="fill"/>
+                                        <path d="M12 16.9875C12.8769 16.9875 13.8389 16.8997 14.8153 16.7599C14.4016 18.7425 13.8731 20.575 13.5722 21.5566C13.475 21.8739 13.4363 21.9985 13.3694 22.1658C13.336 22.2494 13.302 22.326 13.2543 22.4259C12.843 22.4748 12.4244 22.5 12 22.5C11.5756 22.5 11.157 22.4748 10.7457 22.4259C10.698 22.326 10.664 22.2494 10.6306 22.1658C10.5637 21.9986 10.525 21.8739 10.4278 21.5567C10.1269 20.5751 9.59846 18.7427 9.18478 16.7603C10.1579 16.8996 11.1201 16.9875 12 16.9875Z"
+                                              class="fill"/>
+                                        <path d="M5.0385 15.9259C3.73853 15.6024 2.63135 15.2775 1.95597 15.0702C2.97258 18.4002 5.59982 21.0274 8.92983 22.044L8.92192 22.0182C8.59705 20.9582 7.96897 18.7917 7.52191 16.4784C6.6525 16.3103 5.80722 16.1171 5.0385 15.9259Z"
+                                              class="fill"/>
+                                        <path d="M22.0182 15.0781C20.9582 15.403 18.7915 16.0311 16.4781 16.4781C16.0311 18.7915 15.403 20.9581 15.0781 22.0182L15.0702 22.044C18.4002 21.0274 21.0274 18.4002 22.044 15.0702L22.0182 15.0781Z"
+                                              class="fill"/>
+                                        <path d="M1.6103 13.323C1.64665 13.3277 1.67628 13.3327 1.68611 13.3349C1.69472 13.337 1.70821 13.3406 1.7131 13.3419L1.72391 13.345L1.72973 13.3468L1.73585 13.3487L1.74098 13.3503C1.7381 13.3494 1.67976 13.3348 1.6103 13.323Z"
+                                              class="fill"/>
+                                    </svg>
+                                    <div>
+                                        <p>Site</p>
+                                        <a href="https://viniciuscampitelli.com" target="_blank" rel="noopener">
+                                            viniciuscampitelli.com
+                                        </a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <svg role="img" viewBox="0 0 25 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                                              class="fill"></path>
+                                    </svg>
+                                    <div>
+                                        <p>GitHub</p>
+                                        <a href="https://github.com/vcampitelli" target="_blank" rel="noopener">
+                                            vcampitelli
+                                        </a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <svg role="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                              d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
+                                              class="fill"/>
+                                        <path d="M18 5C17.4477 5 17 5.44772 17 6C17 6.55228 17.4477 7 18 7C18.5523 7 19 6.55228 19 6C19 5.44772 18.5523 5 18 5Z"
+                                              class="fill"/>
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                              d="M1.65396 4.27606C1 5.55953 1 7.23969 1 10.6V13.4C1 16.7603 1 18.4405 1.65396 19.7239C2.2292 20.8529 3.14708 21.7708 4.27606 22.346C5.55953 23 7.23969 23 10.6 23H13.4C16.7603 23 18.4405 23 19.7239 22.346C20.8529 21.7708 21.7708 20.8529 22.346 19.7239C23 18.4405 23 16.7603 23 13.4V10.6C23 7.23969 23 5.55953 22.346 4.27606C21.7708 3.14708 20.8529 2.2292 19.7239 1.65396C18.4405 1 16.7603 1 13.4 1H10.6C7.23969 1 5.55953 1 4.27606 1.65396C3.14708 2.2292 2.2292 3.14708 1.65396 4.27606ZM13.4 3H10.6C8.88684 3 7.72225 3.00156 6.82208 3.0751C5.94524 3.14674 5.49684 3.27659 5.18404 3.43597C4.43139 3.81947 3.81947 4.43139 3.43597 5.18404C3.27659 5.49684 3.14674 5.94524 3.0751 6.82208C3.00156 7.72225 3 8.88684 3 10.6V13.4C3 15.1132 3.00156 16.2777 3.0751 17.1779C3.14674 18.0548 3.27659 18.5032 3.43597 18.816C3.81947 19.5686 4.43139 20.1805 5.18404 20.564C5.49684 20.7234 5.94524 20.8533 6.82208 20.9249C7.72225 20.9984 8.88684 21 10.6 21H13.4C15.1132 21 16.2777 20.9984 17.1779 20.9249C18.0548 20.8533 18.5032 20.7234 18.816 20.564C19.5686 20.1805 20.1805 19.5686 20.564 18.816C20.7234 18.5032 20.8533 18.0548 20.9249 17.1779C20.9984 16.2777 21 15.1132 21 13.4V10.6C21 8.88684 20.9984 7.72225 20.9249 6.82208C20.8533 5.94524 20.7234 5.49684 20.564 5.18404C20.1805 4.43139 19.5686 3.81947 18.816 3.43597C18.5032 3.27659 18.0548 3.14674 17.1779 3.0751C16.2777 3.00156 15.1132 3 13.4 3Z"
+                                              class="fill"/>
+                                    </svg>
+                                    <div>
+                                        <p>Instagram</p>
+                                        <a href="https://instagram.com/vcampitelli" target="_blank" rel="noopener">
+                                            vcampitelli
+                                        </a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"
+                                              class="fill"></path>
+                                    </svg>
+                                    <div>
+                                        <p><span class="text-strike text-muted">X</span> Twitter</p>
+                                        <a href="https://twitter.com/vcampitelli" target="_blank" rel="noopener">
+                                            vcampitelli
+                                        </a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <svg role="img" viewBox="0 0 74 74" xmlns="http://www.w3.org/2000/svg">
+                                        <g fill="none" fill-rule="evenodd">
+                                            <path d="M8,72 L64,72 C68.418278,72 72,68.418278 72,64 L72,8 C72,3.581722 68.418278,-8.11624501e-16 64,0 L8,0 C3.581722,8.11624501e-16 -5.41083001e-16,3.581722 0,8 L0,64 C5.41083001e-16,68.418278 3.581722,72 8,72 Z"
+                                                  class="fill"/>
+                                            <path d="M62,62 L51.315625,62 L51.315625,43.8021149 C51.315625,38.8127542 49.4197917,36.0245323 45.4707031,36.0245323 C41.1746094,36.0245323 38.9300781,38.9261103 38.9300781,43.8021149 L38.9300781,62 L28.6333333,62 L28.6333333,27.3333333 L38.9300781,27.3333333 L38.9300781,32.0029283 C38.9300781,32.0029283 42.0260417,26.2742151 49.3825521,26.2742151 C56.7356771,26.2742151 62,30.7644705 62,40.051212 L62,62 Z M16.349349,22.7940133 C12.8420573,22.7940133 10,19.9296567 10,16.3970067 C10,12.8643566 12.8420573,10 16.349349,10 C19.8566406,10 22.6970052,12.8643566 22.6970052,16.3970067 C22.6970052,19.9296567 19.8566406,22.7940133 16.349349,22.7940133 Z M11.0325521,62 L21.769401,62 L21.769401,27.3333333 L11.0325521,27.3333333 L11.0325521,62 Z"
+                                                  class="fill-bg"/>
+                                        </g>
+                                    </svg>
+                                    <div>
+                                        <p>LinkedIn</p>
+                                        <a href="https://linkedin.com/in/viniciuscampitelli" target="_blank"
+                                           rel="noopener">
+                                            Vinícius Campitelli
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h1>Slides</h1>
+                        <div class="d-flex justify-start items-center">
+                            <div>
+                                <a href="https://viniciuscampitelli.com/slides-git" target="_blank" rel="noopener"
+                                   class="d-block">
+                                    <img src="img/qrcode-slides.png" alt="Workshops" style="height: 300px" class="my-0">
+                                </a>
+                            </div>
+                            <div class="qrcode-featured-text">
+                                Clone este repositório em
+                                <a href="https://github.com/vcampitelli/slides-git" target="_blank" rel="noopener"
+                                   class="d-block">github.com/vcampitelli/slides-git</a> ou acesse os
+                                <em>slides</em> em
+                                <a href="https://viniciuscampitelli.com/slides-git" target="_blank" rel="noopener"
+                                   class="d-block">viniciuscampitelli.com/slides-git</a>
+                            </div>
+                        </div>
+                    </section>
+                </section> <!-- Sobre -->
+
+                <section> <!-- Introdução -->
+                    <section data-auto-animate data-auto-animate-restart>
+                        <h1>Introdução</h1>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Introdução</h1>
+                        <h2>Controle de Versão</h2>
+                        <p>
+                            <b>Sistemas de Versionamento de Código</b> (em inglês: <em>"Version Control System"</em> ou
+                            VCS) são serviços responsáveis por controlar modificações e diferentes versões do código de
+                            nossos sistemas, fornecendo histórico para alterações, trabalho em equipe e separação do
+                            ambiente de trabalho entre colaboradores
+                        </p>
+                    </section>
+                    <section>
+                        <h1 class="subtitle">Introdução</h1>
+                        <h2>Tipos de Controle de Versão</h2>
+                        <div class="d-flex cols-2">
+                            <div class="fragment">
+                                <h3>Centralizado</h3>
+                                <p>
+                                    Um servidor central é responsável por receber todas as modificações dos
+                                    colaboradores
+                                </p>
+                                <p>Toda alteração feita na máquina é automaticamente enviada ao servidor central</p>
+                                <p>
+                                    Vários metadados ficam apenas no servidor principal, acarretando em um único ponto
+                                    de falha
+                                </p>
+                            </div>
+                            <div class="fragment">
+                                <h3>Distribuído</h3>
+                                <p>
+                                    Mesmo havendo um servidor principal, os colaboradores possuem suas cópias
+                                    <em>offline</em> que podem servir inclusive como <em>backup</em>
+                                </p>
+                                <p>
+                                    As alterações são primeiro realizadas na cópia local do servidor e, depois, devem
+                                    ser enviadas para o servidor principal pelo colaborador
+                                </p>
+                            </div>
+                        </div>
+                        <a href="https://about.gitlab.com/blog/2020/11/19/move-to-distributed-vcs/" target="_blank"
+                           rel="noopener" class="reference"> Why you should move from centralized version control to
+                            distributed version control (GitLab.com)</a>
+                    </section>
+                    <section>
+                        <h1 class="subtitle">Introdução</h1>
+                        <h2>Ferramentas de Controle de Versão</h2>
+
+                        <p>Alguns dos principais Sistemas de Controle de Versão:</p>
+                        <ul>
+                            <li>
+                                <a href="https://en.wikipedia.org/wiki/Source_Code_Control_System" target="_blank"
+                                   rel="noopener">Source Code Control System</a> (SCSS), lançado em 1973;
+                            </li>
+                            <li>
+                                <a href="https://cvs.nongnu.org/" target="_blank" rel="noopener">
+                                    Concurrent Versions System
+                                </a> (CVS), lançado em 1986 <em>(mas que teve sua primeira
+                                versão disponível para a comunidade em 1990)</em>;
+                            </li>
+                            <li>
+                                <a href="https://subversion.apache.org/" target="_blank" rel="noopener">Subversion</a>
+                                (SVN), lançado em 2000;
+                            </li>
+                            <li>
+                                <a href="https://www.bitkeeper.org/" target="_blank" rel="noopener">BitKeeper</a>,
+                                lançado em 2000;
+                            </li>
+                            <li>
+                                <a href="https://www.mercurial-scm.org/" target="_blank" rel="noopener">Mercurial</a>
+                                (Hg), lançado em 2005;
+                            </li>
+                            <li>
+                                <a href="https://git-scm.com/" target="_blank" rel="noopener">Git</a>, lançado em 2005.
+                            </li>
+                        </ul>
+                        <a href="https://dev.to/thefern/history-of-version-control-systems-vcs-43ch" target="_blank"
+                           rel="noopener" class="reference">History of Version Control Systems VCS (dev.to)</a>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Introdução</h1>
+                        <h2>Git</h2>
+                        <p>
+                            Ferramenta criada por
+                            <a href="https://en.wikipedia.org/wiki/Linus_Torvalds" target="_blank" rel="noopener">
+                                Linus Torvalds
+                            </a> (o criador do Linux) em 2005, após a licença do BitKeeper se tornar paga,
+                            impossibilitando seu uso no Linux
+                        </p>
+                        <a href="https://www.linux.com/news/bitkeeper-and-linux-end-road/" target="_blank"
+                           rel="noopener" class="reference">BitKeeper and Linux: The end of the road?</a>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Introdução</h1>
+                        <h2>Git</h2>
+                        <iframe width="560" height="315"
+                                src="https://www.youtube.com/embed/4XpnKHJAok8?si=IbayMk1lJPMO61T2"
+                                title="YouTube video player" frameborder="0"
+                                allow="encrypted-media; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
+                        <a href="https://www.youtube.com/watch?v=4XpnKHJAok8" target="_blank" rel="noopener"
+                           class="reference">Palestra do Linus Torvalds sobre git em 2007</a>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Introdução</h1>
+                        <h2>Git</h2>
+                        <blockquote>
+                            The development of Git began on 3 April 2005. Torvalds announced the project on 6 April and
+                            became self-hosting the next day. The first merge of multiple branches took place on 18
+                            April. Torvalds achieved his performance goals; on 29 April, the nascent Git was benchmarked
+                            recording patches to the Linux kernel tree at a rate of 6.7 patches per second. On 16 June,
+                            Git managed the kernel 2.6.12 release.<br>
+                            Torvalds turned over maintenance on 26 July 2005 to Junio Hamano, a major contributor to the
+                            project. Hamano was responsible for the 1.0 release on 21 December 2005.
+                        </blockquote>
+                        <a href="https://en.wikipedia.org/wiki/Git" target="_blank" rel="noopener" class="reference">Git
+                            (Wikipedia)</a>
+                    </section>
+                </section> <!-- Introdução -->
+
+                <section data-visibility="hidden"> <!-- Descartando mudanças -->
+                    <section class="slide-problem">
+                        <span>Problema</span>
+                        <h1>Como descartar mudanças locais?</h1>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Descartando mudanças locais</h1>
+                        <h2><code>git reset &lt;referência&gt;</code></h2>
+                        <p>
+                            Traz todo o estado do <em>commit</em> especificado para o projeto atual, mantendo as
+                            modificações locais
+                        </p>
+                        <pre><code class="shell" data-trim>
+                            $ git log --oneline
+                            9581191 (HEAD -> main) Versão nova
+                            5287db4 Versão antiga
+                            ⁣
+                            $ git reset 5287db4
+                            Unstaged changes after reset:
+                            M    arquivo
+                            ⁣
+                            $ git log --oneline
+                            5287db4 (HEAD -> main) Versão antiga
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h1 class="subtitle">Descartando mudanças locais</h1>
+                        <h2><code>git reset --hard &lt;referência&gt;</code></h2>
+                        <p>
+                            Traz todo o estado do <em>commit</em> especificado para o projeto atual, descartando as
+                            modificações locais
+                        </p>
+                        <pre><code class="shell" data-trim>
+                            $ git log --oneline
+                            9581191 (HEAD -> main) Versão nova
+                            5287db4 Versão antiga
+                            ⁣
+                            $ git reset --hard 5287db4
+                            HEAD is now at 5287db4 Versão antiga
+                            ⁣
+                            $ git log --oneline
+                            5287db4 (HEAD -> main) Versão antiga
+                            ⁣
+                            $ git status
+                            On branch main
+                            nothing to commit, working tree clean
+                        </code></pre>
+                    </section>
+                </section> <!-- Descartando mudanças -->
+
+                <section data-visibility="hidden"> <!-- Revertendo Commits -->
+                    <section class="slide-problem">
+                        <span>Problema</span>
+                        <h1>Como desfazer um <em>commit</em>?</h1>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Desfazendo <em>commits</em></h1>
+                        <h2><code>git revert &lt;hash-do-commit&gt;</code></h2>
+                        <p>
+                            Ao invés de descartar os <em>commits</em>, esse comando cria um outro <em>commit</em> com as
+                            alterações "reversas"
+                        </p>
+                        <p>
+                            Ou seja: linhas que foram adicionadas serão removidas, as que foram removidas serão
+                            adicionadas de volta, arquivos que foram criados serão excluídos, etc...
+                        </p>
+                        <pre data-id="pre"><code class="shell" data-trim data-line-numbers="1-2|4-12">
+                            $ git log --oneline
+                            7d4abd6 (HEAD -> main) Mudanças do arquivo
+                            ⁣
+                            $ git show 7d4abd6 --oneline
+                            7d4abd6 Mudanças do arquivo
+                            diff --git a/arquivo b/arquivo
+                            index 7898192..3dcb048 100644
+                            --- a/arquivo
+                            +++ b/arquivo
+                            @@ -1 +1 @@
+                            -Versão anterior
+                            +Mudanças do arquivo
+                        </code></pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Desfazendo <em>commits</em></h1>
+                        <h2><code>git revert &lt;hash-do-commit&gt;</code></h2>
+                        <p>
+                            Ao invés de descartar os <em>commits</em>, esse comando cria um outro <em>commit</em> com as
+                            alterações "reversas"
+                        </p>
+                        <p>
+                            Ou seja: linhas que foram adicionadas serão removidas, as que foram removidas serão
+                            adicionadas de volta, arquivos que foram criados serão excluídos, etc...
+                        </p>
+                        <pre data-id="pre2"><code class="shell" data-trim data-line-numbers="1-3|5-7|9-17">
+                            $ git revert 7d4abd6
+                            [main 26b83e6] Revert "Mudanças do arquivo"
+                            1 file changed, 1 insertion(+), 1 deletion(-)
+                            ⁣
+                            $ git log --oneline
+                            26b83e6 (HEAD -> main) Revert "Mudanças do arquivo"
+                            7d4abd6 Mudanças do arquivo
+                            ⁣
+                            $ git show 26b83e6 --oneline
+                            26b83e6 (HEAD -> main) Revert "Mudanças do arquivo"
+                            diff --git a/arquivo b/arquivo
+                            index 3dcb048..7898192 100644
+                            --- a/arquivo
+                            +++ b/arquivo
+                            @@ -1 +1 @@
+                            -Mudanças do arquivo
+                            +Versão anterior
+                        </code></pre>
+                    </section>
+                </section> <!-- Revertendo Commits -->
+
+                <section> <!-- Stash -->
+                    <section class="slide-problem">
+                        <span>Problema</span>
+                        <h1>Como descartar mudanças temporariamente para recuperá-las depois?</h1>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Pilha de <em>backup</em></h1>
+                        <h2><code>git stash</code></h2>
+                        <p>
+                            Salva as diferenças atuais do projeto (que ainda não estão em um <em>commit</em>) em uma
+                            área à parte, possibilitando rapidamente recuperá-las posteriormente
+                        </p>
+                        <pre><code class="shell" data-trim data-line-numbers="1-7|9-13|15-22">
+                            $ git status
+                            On branch main
+                            Changes not staged for commit:
+                              (use "git add &lt;file&gt;..." to update what will be committed)
+                              (use "git restore &lt;file&gt;..." to discard changes in working directory)
+                                modified:   arquivo
+                            no changes added to commit (use "git add" and/or "git commit -a")
+                            ⁣
+                            $ git stash push
+                            Saved working directory and index state WIP on main: a1d4cfc Criando arquivo
+                            $ git status
+                            On branch main
+                            nothing to commit, working tree clean
+                            ⁣
+                            $ git stash pop
+                            On branch main
+                            Changes not staged for commit:
+                              (use "git add &lt;file&gt;..." to update what will be committed)
+                              (use "git restore &lt;file&gt;..." to discard changes in working directory)
+                                modified:   arquivo
+                            no changes added to commit (use "git add" and/or "git commit -a")
+                            Dropped refs/stash@{0} (66650bc83e829d949d6ba24833962f539de87aa9)
+                        </code></pre>
+                        <a href="https://git-scm.com/docs/git-stash/pt_BR" target="_blank" rel="noopener"
+                           class="reference">Git - git-stash Documentation</a>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Pilha de <em>backup</em></h1>
+                        <h2><code>git stash</code></h2>
+                        <p>
+                            É possível listar os itens da pilha, definir mensagens personalizadas e retirar itens
+                            específicos ao invés do último
+                        </p>
+                        <pre><code class="shell" data-trim data-line-numbers="1-6|8-16|18-19">
+                            $ git stash push -m 'Alternativa 2 do novo layout'
+                            Saved working directory and index state On main: Alternativa 2 do novo layout
+                            ⁣
+                            $ git stash list
+                            stash@{0}: On main: Alternativa 2 do novo layout
+                            stash@{1}: On main: Alternativa 1 do novo layout
+                            ⁣
+                            $ git stash pop 1
+                            On branch main
+                            Changes not staged for commit:
+                              (use "git add &lt;file>..." to update what will be committed)
+                              (use "git restore &lt;file>..." to discard changes in working directory)
+                                modified:   arquivo
+
+                            no changes added to commit (use "git add" and/or "git commit -a")
+                            Dropped refs/stash@{1} (c939104fffd184cc567757af264c0e9f20ceae94)
+                            ⁣
+                            $ git stash list
+                            stash@{0}: On main: Alternativa 2 do novo layout
+                        </code></pre>
+                        <a href="https://git-scm.com/docs/git-stash/pt_BR" target="_blank" rel="noopener"
+                           class="reference">Git - git-stash Documentation</a>
+                    </section>
+                </section> <!-- Stash -->
+
+                <section> <!-- Último commit -->
+                    <section class="slide-problem">
+                        <span>Problema</span>
+                        <h1>Como alterar o último <em>commit</em>?</h1>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Alterando o último <em>commit</em></h1>
+                        <h2><code>git commit --amend</code></h2>
+                        <p>
+                            Aplica as modificações atuais no último <em>commit</em> ao invés de criar um novo
+                        </p>
+                        <pre><code class="shell" data-trim data-line-numbers="1-7|9-13|15-17">
+                            $ git commit -m "Commit antigo sem um certo arquivo"
+                            [main 9be2532] Commit antigo sem um certo arquivo
+                             1 file changed, 100 insertions(+)
+                            ⁣
+                            $ git log --oneline
+                            9be2532 (HEAD -> main) Commit antigo sem um certo arquivo
+                            54d3769 Commit anterior
+                            ⁣
+                            $ git add novo-arquivo
+                            $ git commit --amend -m "Novo commit com o arquivo adicionado"
+                            [main 9fa3283] Novo commit com o arquivo adicionado
+                             2 files changed, 200 insertions(+)
+                             create mode 100644 novo-arquivo
+                            ⁣
+                            $ git log --oneline
+                            9fa3283 (HEAD -> main) Novo commit com o arquivo adicionado
+                            54d3769 Commit anterior
+                        </code></pre>
+                        <a href="https://git-scm.com/docs/git-commit/pt_BR" target="_blank" rel="noopener"
+                           class="reference">Documentação oficial: git commit</a>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Alterando o último <em>commit</em></h1>
+                        <h2><code>git commit --amend</code></h2>
+                        <p>
+                            Também é possível informar o argumento <code>--no-edit</code> para não alterar a mensagem
+                        </p>
+                        <pre><code class="shell" data-trim data-line-numbers="1-7|9-13|15-17">
+                            $ git commit --amend --no-edit
+                            [main 937aafe] Mensagem do commit anterior
+                             Date: Seg Jan  1 00:00:01 2024 -0300
+                             1 file changed, 0 insertions(+), 0 deletions(-)
+                             create mode 100644 novo-arquivo
+                        </code></pre>
+                        <a href="https://git-scm.com/docs/git-commit/pt_BR" target="_blank" rel="noopener"
+                           class="reference">Documentação oficial: git commit</a>
+                    </section>
+                </section> <!-- Último commit -->
+
+                <section> <!-- Incorporando Mudanças -->
+                    <section class="slide-problem">
+                        <span>Problema</span>
+                        <h1>Como incorporar mudanças de outras <em>branches</em>?</h1>
+                    </section>
+                    <section>
+                        <h1 class="subtitle">Incorporando Mudanças</h1>
+                        <h2><code>git cherry-pick &lt;referência&gt;</code></h2>
+                        <p>Busca um ou mais determinados <em>commits</em> e os trazem para a sua <em>branch</em></p>
+                        <pre><code class="shell" data-trim data-line-numbers="1-2|4-7|9-11">
+                            $ git log --oneline
+                            91e2609 (HEAD -> main) Commit inicial
+                            ⁣
+                            $ git cherry-pick 7d9af37
+                            [main 236b1fc] Esse commit é de outra branch
+                             Date: Seg Jan  1 00:00:01 2024 -0300
+                             15 files changed, 100 insertions(+), 50 deletions(-)
+                            ⁣
+                            $ git log --oneline
+                            236b1fc (HEAD -> main) Esse commit é de outra branch
+                            91e2609 Commit inicial
+                        </code></pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Incorporando Mudanças</h1>
+                        <h2><code>git merge</code></h2>
+                        <p>
+                            Faz a incorporação de uma <em>branch</em> em outra
+                        </p>
+                        <pre><code class="shell" data-trim data-line-numbers>
+                            $ git merge develop
+                            Merge made by the 'ort' strategy.
+                             composer.lock  | 20 ++++----
+                             1 file changed, 15 insertions(+), 5 deletions(-)
+                            ⁣
+                            $ git log --oneline -n1
+                            a06402a (HEAD -> main) Merge remote-tracking branch 'develop'
+                        </code></pre>
+                        <img src="img/merge.svg" alt="Fluxo de merge no Git">
+                        <a href="https://git-scm.com/docs/git-merge/pt_BR" target="_blank" rel="noopener"
+                           class="reference">Documentação oficial: git merge</a>
+                    </section>
+                    <section data-auto-animate data-auto-animate-restart>
+                        <h1 class="subtitle">Incorporando Mudanças</h1>
+                        <h2><code>git rebase &lt;nome-da-branch&gt;</code></h2>
+                        <p>
+                            "Move" o início da sua <em>branch</em> para outro lugar no histórico de <em>commits</em>,
+                            útil para trazer as modificações da <kbd>main</kbd>, por exemplo
+                        </p>
+                        <div class="d-flex cols-2 mt-4">
+                            <div>
+                                <figure>
+                                    <img src="img/rebase.svg" alt="Branch pré-rebase" data-id="svg" class="my-0">
+                                    <figcaption>
+                                        <em>Branch</em> criada a partir de <code>m2</code>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div>
+                                <p>A <em>branch</em> contém os <em>commits</em>:</p>
+                                <code data-id="m1">m1</code>
+                                <code data-id="m2">m2</code>
+                                <code data-id="b1">b1</code>
+                                <code data-id="b2">b2</code>
+                                <code data-id="b3">b3</code>
+                                <code data-id="b4">b4</code>
+                            </div>
+                        </div>
+                        <pre class="mt-4"><code class="shell" data-trim data-line-numbers>
+                            $ git rebase origin/main
+                            Successfully rebased and updated refs/heads/develop.
+                        </code></pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Incorporando Mudanças</h1>
+                        <h2><code>git rebase &lt;nome-da-branch&gt;</code></h2>
+                        <p>
+                            "Move" o início da sua <em>branch</em> para outro lugar no histórico de <em>commits</em>,
+                            útil para trazer as modificações da <kbd>main</kbd>, por exemplo
+                        </p>
+                        <div class="d-flex cols-2 mt-4">
+                            <div>
+                                <figure>
+                                    <img src="img/rebase-pos.svg" alt="Branch pós-rebase" data-id="svg" class="my-0">
+                                    <figcaption>
+                                        <em>Branch</em> após <em>rebase</em> com início em <code>m3</code>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div>
+                                <p>A <em>branch</em> contém os <em>commits</em>:</p>
+                                <code data-id="m1">m1</code>
+                                <code data-id="m2">m2</code>
+                                <code>m3</code>
+                                <code data-id="b1">b1'</code>
+                                <code data-id="b2">b2'</code>
+                                <code data-id="b3">b3'</code>
+                                <code data-id="b4">b4'</code>
+                            </div>
+                        </div>
+                        <pre class="mt-4"><code class="shell" data-trim data-line-numbers>
+                            $ git rebase origin/main
+                            Successfully rebased and updated refs/heads/develop.
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h1 class="subtitle">Incorporando Mudanças</h1>
+                        <h2><code>git merge</code> vs <code>git rebase</code></h2>
+                        <div class="d-flex cols-2">
+                            <div>
+                                <p>
+                                    <b class="font-italic">Merge:</b> cria um novo <em>commit</em> trazendo as
+                                    modificações da outra <em>branch</em>
+                                </p>
+                                <div class="r-stack">
+                                    <div class="fragment fade-out" data-fragment-index="1">
+                                        <figure>
+                                            <img src="img/merge-vs-rebase.svg" alt="Branch antes do merge">
+                                            <figcaption>
+                                                <em>Branch</em> antes do <em>merge</em>
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class="fragment" data-fragment-index="1">
+                                        <figure>
+                                            <img src="img/merge-vs-rebase-pos.svg" alt="Branch após merge">
+                                            <figcaption>
+                                                <em>Branch</em> após o <em>merge</em>
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <p>
+                                    <b class="font-italic">Rebase:</b> move o início da sua <em>branch</em> para o
+                                    local especificado
+                                </p>
+                                <div class="r-stack">
+                                    <div class="fragment fade-out" data-fragment-index="2">
+                                        <figure>
+                                            <img src="img/rebase.svg" alt="Branch antes do rebase">
+                                            <figcaption>
+                                                <em>Branch</em> antes do <em>rebase</em>
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class="fragment" data-fragment-index="2">
+                                        <figure>
+                                            <img src="img/rebase-pos.svg" alt="Branch após rebase">
+                                            <figcaption>
+                                                <em>Branch</em> após o <em>rebase</em>
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Incorporando Mudanças</h1>
+                        <h2>Resolução de Conflitos</h2>
+                        <p>
+                            Ao fazer <em>merge</em>, <em>rebase</em>, <em>cherry-pick</em> e algumas outras operações, o
+                            Git pode não conseguir mesclar as mudanças, pedindo para que o usuário resolva os problemas
+                            normalmente
+                        </p>
+                        <p>
+                            Isso pode acontecer, por exemplo, se duas <em>branches</em> possuírem modificações nas
+                            mesmas linhas de um arquivo
+                        </p>
+                        <pre><code class="shell" data-trim>
+                            $ git merge develop
+                            Auto-merging README
+                            CONFLICT (content): Merge conflict in index.html
+                            Automatic merge failed; fix conflicts and then commit the result.
+                            ⁣
+                            $ git status
+                            On branch main
+                            You have unmerged paths.
+                              (fix conflicts and run "git commit")
+                              (use "git merge --abort" to abort the merge)
+
+                            Unmerged paths:
+                              (use "git add/rm &lt;file&gt;..." to mark resolution)
+                                both modified:   index.html
+                        </code></pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Incorporando Mudanças</h1>
+                        <h2>Resolução de Conflitos</h2>
+                        <p>
+                            Ao abrir o arquivo com conflitos em um editor de textos, você verá algo como:
+                        </p>
+                        <pre><code class="plaintext" data-trim>
+                            &lt;?php
+                            <<<<<<< HEAD
+                            class User implements Serializable
+                            =======
+                            class User implements ArrayAccess
+                            >>>>>>> develop
+                            {
+                        </code></pre>
+                        <p>
+                            Essas marcações ao redor das linhas da classe <kbd>User</kbd> indicam os blocos com
+                            alterações conflitantes:
+                        </p>
+                        <ul class="margin">
+                            <li>
+                                O primeiro bloco, que começa em <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> e vai até
+                                <code>=======</code>, mostra o que temos atualmente no <code>HEAD</code>
+                            </li>
+                            <li>
+                                O segundo bloco (entre o mesmo <code>=======</code> até o próximo
+                                <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>) nos informa o que está vindo da
+                                <code>develop</code>
+                            </li>
+                        </ul>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Incorporando Mudanças</h1>
+                        <h2>Resolução de Conflitos</h2>
+                        <p>
+                            Para resolver o conflito manualmente, devemos resolver todo o código entre
+                            <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> e <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>,
+                            removendo essas marcações
+                        </p>
+                        <pre data-id="pre"><code class="plaintext" data-trim data-line-numbers>
+                            &lt;?php
+                            <<<<<<< HEAD
+                            class User implements Serializable
+                            =======
+                            class User implements ArrayAccess
+                            >>>>>>> develop
+                            {
+                        </code></pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Incorporando Mudanças</h1>
+                        <h2>Resolução de Conflitos</h2>
+                        <p>
+                            Para resolver o conflito manualmente, devemos resolver todo o código entre
+                            <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> e <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>,
+                            removendo essas marcações
+                        </p>
+                        <pre data-id="pre"><code class="php" data-trim data-line-numbers>
+                            &lt;?php
+                            class User implements ArrayAccess, Serializable
+                            {
+                        </code></pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Incorporando Mudanças</h1>
+                        <h2>Resolução de Conflitos</h2>
+                        <p>
+                            Pode se tornar difícil resolver esses conflitos manualmente, então dê preferência a
+                            resolvê-los com algumas ferramentas:
+                        </p>
+                        <ul class="margin">
+                            <li>
+                                Sua própria IDE ou editor de texto, como o
+                                <a href="https://learn.microsoft.com/en-us/visualstudio/version-control/git-resolve-conflicts?view=vs-2022"
+                                   target="_blank" rel="noopener">Visual Studio Code</a>
+                            </li>
+                            <li>
+                                Interfaces gráficas do Git, que podem ser baixadas em
+                                <a href="https://git-scm.com/downloads/guis">git-scm.com/downloads/guis</a>
+                            </li>
+                            <li>
+                                Aplicações especializadas de comparação, como as
+                                <a href="https://www.git-tower.com/blog/diff-tools-windows" target="_blank" rel="noopener">
+                                    apresentadas nesta lista
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
+                </section> <!-- Incorporando Mudanças -->
+
+                <section> <!-- Reescrevendo Histórico -->
+                    <section class="slide-problem">
+                        <span>Problema</span>
+                        <h1>Como juntar/descartar/alterar <em>commits</em>?</h1>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Reescrevendo Histórico</h1>
+                        <h2><code>git rebase -i &lt;referência-do-commit&gt;</code></h2>
+                        <p>
+                            Utilizamos o comando <code>git rebase &lt;outra-branch&gt;</code> (sem o argumento
+                            <code>-i</code>) para levar todos os <em>commits</em> da <em>branch</em> atual para
+                            <kbd>outra-branch</kbd>
+                        </p>
+                        <p>
+                            Também podemos utilizar este comando com o modo interativo através do argumento
+                            <code>-i</code>, permitindo escolher o que fazer com cada um dos <em>commits</em>
+                        </p>
+                        <a href="https://docs.github.com/pt/get-started/using-git/using-git-rebase-on-the-command-line"
+                           target="_blank" rel="noopener" class="reference" data-id="github-docs-rebase">
+                            Usar rebase do Git na linha de comando - GitHub Docs
+                        </a>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Reescrevendo Histórico</h1>
+                        <h2><code>git rebase -i &lt;referência-do-commit&gt;</code></h2>
+                        <p>
+                            Isso torna esse comando uma das funções mais complexas do Git, pois a utilizamos para
+                            <b>reescrever o histórico</b> de uma <em>branch</em>, podendo adicionar <em>commits</em>,
+                            dividi-los, juntá-los, ou até mesmo descartá-los
+                        </p>
+                        <div class="alert">
+                            Cuidado: os <em>hashes sha-1</em> dos <em>commits</em> serão reescritos. Por isso, não é
+                            muito recomendado usá-lo caso outras pessoas da equipe já tenham baixado as atualizações em
+                            suas máquinas, pois podem perder código!
+                        </div>
+                        <a href="https://docs.github.com/pt/get-started/using-git/using-git-rebase-on-the-command-line"
+                           target="_blank" rel="noopener" class="reference" data-id="github-docs-rebase">
+                            Usar rebase do Git na linha de comando - GitHub Docs
+                        </a>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Reescrevendo Histórico</h1>
+                        <h2><code>git rebase -i &lt;referência-do-commit&gt;</code></h2>
+                        <p>Para reescrever os últimos 5 <em>commits</em>, basta executarmos:</p>
+                        <pre><code class="shell" data-trim>
+                            $ git rebase -i HEAD~5
+                        </code></pre>
+                        <p>
+                            Então, um editor de texto irá abrir com a lista desses 5 <em>commits</em>, prefixados pelo
+                            comando <code>pick</code> (que significa que queremos usar esse <em>commit</em> exatamente
+                            como ele está):
+                        </p>
+                        <pre><code class="shell" data-trim>
+                            pick 8cdd9b63 Commit antes do anterior do antepenúltimo
+                            pick 529f9db2 Commit anterior do antepenúltimo
+                            pick 99769a26 Antepenúltimo commit
+                            pick d81cefdf Penúltimo commit
+                            pick a3a39d99 Último commit
+                        </code></pre>
+                        <a href="https://docs.github.com/pt/get-started/using-git/using-git-rebase-on-the-command-line"
+                           target="_blank" rel="noopener" class="reference" data-id="github-docs-rebase">
+                            Usar rebase do Git na linha de comando - GitHub Docs
+                        </a>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Reescrevendo Histórico</h1>
+                        <h2><code>git rebase -i &lt;referência-do-commit&gt;</code></h2>
+                        <p>
+                            Para alterar um <em>commit</em> específico, basta renomearmos <code>pick</code> para os
+                            comandos permitidos <em>(alguns listados abaixo)</em> e salvar o arquivo
+                        </p>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Atalho</th>
+                                    <th>Comando</th>
+                                    <th>Descrição</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>p</code></td>
+                                    <td><code>pick</code></td>
+                                    <td>
+                                        usa o <em>commit</em> como está (padrão)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>r</code></td>
+                                    <td><code>reword</code></td>
+                                    <td>
+                                        usa o <em>commit</em> mas edita a mensagem
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>e</code></td>
+                                    <td><code>edit</code></td>
+                                    <td>
+                                        usa o <em>commit</em>, mas para o processo para você poder fazer qualquer
+                                        alteração no projeto
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>s</code></td>
+                                    <td><code>squash</code></td>
+                                    <td>
+                                        usa o <em>commit</em> mas incorpora-o no anterior, gerando um só
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>f</code></td>
+                                    <td><code>fixup</code></td>
+                                    <td>
+                                        como <code>squash</code>, mas descarta a mensagem desse <em>commit</em>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>d</code></td>
+                                    <td><code>drop</code></td>
+                                    <td>descarta o <em>commit</em></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a href="https://docs.github.com/pt/get-started/using-git/using-git-rebase-on-the-command-line"
+                           target="_blank" rel="noopener" class="reference" data-id="github-docs-rebase">
+                            Usar rebase do Git na linha de comando - GitHub Docs
+                        </a>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Reescrevendo Histórico</h1>
+                        <h2><code>git rebase -i &lt;referência-do-commit&gt;</code></h2>
+                        <p>
+                            Após salvar o arquivo, entraremos no modo de <em>rebase</em>, onde poderemos alterar os
+                            <em>commits</em>, criar novos ou renomear suas mensagens
+                        </p>
+                        <div class="alert">
+                            Atenção: renomear os <em>commits</em> com o <kbd>reword</kbd> só deve ser feito
+                            <b>após</b> salvar o arquivo de comandos da primeira vez. Não adianta colocar
+                            <kbd>reword</kbd> e já alterar a mensagem!
+                        </div>
+                        <a href="https://docs.github.com/pt/get-started/using-git/using-git-rebase-on-the-command-line"
+                           target="_blank" rel="noopener" class="reference" data-id="github-docs-rebase">
+                            Usar rebase do Git na linha de comando - GitHub Docs
+                        </a>
+                    </section>
+                </section> <!-- Reescrevendo Histórico -->
+
+                <section> <!-- Force push -->
+                    <section class="slide-problem">
+                        <span>Problema</span>
+                        <h1>Como forçar o <em>push</em>?</h1>
+                    </section>
+                    <section data-auto-animate data-auto-animate-restart>
+                        <h1 class="subtitle">Como forçar o <em>push</em>?</h1>
+                        <h2 data-id="title"><code>git push</code></h2>
+                        <p>
+                            Se reescrevemos o histórico e alterarmos a ordem ou o <em>hash</em> dos <em>commits</em> que
+                            já foram enviados ao servidor, o <code>git push</code> irá falhar, já que os
+                            <em>commits</em> em nossa máquina local estão diferentes do que estão no Git
+                        </p>
+                        <div class="alert">
+                            Atenção: isso serve para <em>amend</em>, <em>rebase</em> e outros comandos que alterem o
+                            histórico
+                        </div>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Como forçar o <em>push</em>?</h1>
+                        <h2 data-id="title"><code>git push</code></h2>
+                        <div class="d-flex justify-start text-center">
+                            <div>
+                                <p><em>Commits</em> no Servidor</p>
+                                <ul class="no-list">
+                                    <li class="fragment" data-fragment-index="0"><code>a1</code></li>
+                                    <li class="fragment" data-fragment-index="3"><code>b2</code></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p>&nbsp;</p>
+                                <ul class="no-list">
+                                    <li class="fragment text-color-green" data-fragment-index="2">&check;</li>
+                                    <li class="fragment text-color-red" data-fragment-index="5">&times;</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p><em>Commits</em> Localmente</p>
+                                <ul class="no-list">
+                                    <li class="fragment" data-fragment-index="1"><code>a1</code></li>
+                                    <li class="fragment" data-fragment-index="4"><code>e5</code></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <pre class="fragment"><code class="shell" data-trim>
+                            $ git push
+                            To endereco.do.servidor.com:repositorio.git
+                             ! [rejected]        main -> main (non-fast-forward)
+                            error: failed to push some refs to 'endereco.do.servidor.com:repositorio.git'
+                            hint: Updates were rejected because the tip of your current branch is behind
+                            hint: its remote counterpart. Integrate the remote changes (e.g.
+                            hint: 'git pull ...') before pushing again.
+                            hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+                        </code></pre>
+                        <blockquote class="fragment">
+                            Seu repositório está desatualizado! Alguém fez um <em>commit</em> <code>b2</code>
+                            depois do <code>a1</code> mas você não o tem. Por favor, atualize sua cópia de
+                            trabalho local para baixar esse <em>commit!</em>
+                        </blockquote>
+                        <a href="https://git-scm.com/docs/git-push/pt_BR" target="_blank" rel="noopener"
+                           class="reference">Documentação oficial: git push</a>
+                    </section>
+                    <section data-auto-animate data-auto-animate-restart>
+                        <h1 class="subtitle">Reescrevendo Histórico</h1>
+                        <h2 data-id="title"><code>git push --force</code></h2>
+                        <p>
+                            Então, temos que utilizar o parâmetro <code>--force</code> para forçar o envio das
+                            atualizações, dizendo para o Git ignorar essas diferenças e sobrescrevendo os
+                            <em>commits</em> no servidor
+                        </p>
+                        <pre><code class="shell" data-trim>
+                            $ git push --force
+                        </code></pre>
+                        <a href="https://git-scm.com/docs/git-push/pt_BR" target="_blank" rel="noopener"
+                           class="reference">Documentação oficial: git push</a>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Reescrevendo Histórico</h1>
+                        <h2 data-id="title"><code>git push --force</code></h2>
+                        <img src="img/git-push-force.gif" alt="git push --force" class="mb-0">
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Reescrevendo Histórico</h1>
+                        <h2 data-id="title"><code>git push --force-if-includes</code></h2>
+                        <p>
+                            Recomendo utilizar a alternativa <code>--force-if-includes</code>, que só irá fazer o
+                            <em>push</em> se você possuir na sua cópia local o último <em>commit</em> do servidor (ou
+                            seja, não irá sobrescrever <em>commits</em> que podem ter sido incluídos por outra pessoa
+                            nesse intervalo de tempo)
+                        </p>
+                        <pre><code class="shell" data-trim>
+                            $ git push --force-if-includes
+                        </code></pre>
+                        <a href="https://docs.yemreak.com/blog/programming/safe-pushing-with-git" target="_blank"
+                           rel="noopener" class="reference">Safe Pushing with Git: — force-if-includes | Yunus Emre
+                            Ak</a>
+                    </section>
+                </section> <!-- Force push -->
+
+                <section> <!-- F -->
+                    <section class="slide-problem">
+                        <span>Problema</span>
+                        <h1>Como encontrar o <em>commit</em> que introduziu um bug?</h1>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Encontrando commits com bug</h1>
+                        <h2><code>git bisect</code></h2>
+                        <p data-id="intro">
+                            Utiliza busca binária para encontrar o <em>commit</em> em que um <em>bug</em> foi
+                            introduzido no projeto
+                        </p>
+                        <img src="img/bisect.svg" alt="git bisect" class="insert-svg">
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Encontrando commits com bug</h1>
+                        <h2><code>git bisect</code></h2>
+                        <p data-id="intro">
+                            Utiliza busca binária para encontrar o <em>commit</em> em que um <em>bug</em> foi
+                            introduzido no projeto
+                        </p>
+                        <ol>
+                            <li data-id="li">
+                                Comece executando <code>git bisect start</code> para iniciar a investigação
+                            </li>
+                        </ol>
+                        <pre><code class="shell" data-trim>
+                            $ git bisect start
+                            status: waiting for both good and bad commits
+                            ⁣
+                            $ git status
+                            On branch main
+                            Your branch is up to date with 'origin/main'.
+
+                            You are currently bisecting, started from branch 'main'.
+                              (use "git bisect reset" to get back to the original branch)
+
+                            nothing to commit, working tree clean
+                        </code></pre>
+                        <a href="https://git-scm.com/docs/git-bisect/pt_BR" target="_blank" rel="noopener"
+                           class="reference" data-id="reference">Documentação oficial: git bisect</a>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Encontrando commits com bug</h1>
+                        <h2><code>git bisect</code></h2>
+                        <p data-id="intro">
+                            Utiliza busca binária para encontrar o <em>commit</em> em que um <em>bug</em> foi
+                            introduzido no projeto
+                        </p>
+
+                        <ol start="2">
+                            <li data-id="li">
+                                Teste sua aplicação e marque o <em>commit</em> como bom ou ruim com
+                                <code>git bisect good</code> ou <code>git bisect bad</code>
+                            </li>
+                        </ol>
+                        <pre><code class="shell" data-trim>
+                            $ git bisect bad
+                            status: waiting for good commit(s), bad commit known
+                        </code></pre>
+                        <a href="https://git-scm.com/docs/git-bisect/pt_BR" target="_blank" rel="noopener"
+                           class="reference" data-id="reference">Documentação oficial: git bisect</a>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Encontrando commits com bug</h1>
+                        <h2><code>git bisect</code></h2>
+                        <p data-id="intro">
+                            Utiliza busca binária para encontrar o <em>commit</em> em que um <em>bug</em> foi
+                            introduzido no projeto
+                        </p>
+
+                        <ol start="3">
+                            <li data-id="li">
+                                Encontre algum <em>commit</em> anterior que você saiba que estava funcionando e marque-o
+                                com <code>git bisect good</code>
+                            </li>
+                        </ol>
+                        <pre><code class="shell" data-trim>
+                            $ git bisect good 4229cee31dac9c0a6d6ea6e420861c01eaede4a4
+                            Bisecting: 0 revisions left to test after this (roughly 1 step)
+                            [0f80cdc281324cd118e9f3c065096627d1258d6b] Alguma alteração
+                            ⁣
+                            $ git status
+                            HEAD detached at 0f80cdc
+                            You are currently bisecting, started from branch 'main'.
+                              (use "git bisect reset" to get back to the original branch)
+
+                            nothing to commit, working tree clean
+                        </code></pre>
+                        <a href="https://git-scm.com/docs/git-bisect/pt_BR" target="_blank" rel="noopener"
+                           class="reference" data-id="reference">Documentação oficial: git bisect</a>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Encontrando commits com bug</h1>
+                        <h2><code>git bisect</code></h2>
+                        <p data-id="intro">
+                            Utiliza busca binária para encontrar o <em>commit</em> em que um <em>bug</em> foi
+                            introduzido no projeto
+                        </p>
+
+                        <ol start="4">
+                            <li data-id="li">
+                                Execute o mesmo procedimento de marcar os <em>commits</em> com
+                                <code>git bisect good</code> ou <code>git bisect bad</code> quantas vezes for preciso
+                            </li>
+                        </ol>
+                        <pre><code class="shell" data-trim>
+                            $ git bisect bad
+                            Bisecting: 0 revisions left to test after this (roughly 0 steps)
+                            [66facecc2ec5eedf8f3f248318b4b61e16d0a54c] Outra alteração
+                            ⁣
+                            $ git status
+                            HEAD detached at 66facec
+                            You are currently bisecting, started from branch 'main'.
+                              (use "git bisect reset" to get back to the original branch)
+
+                            nothing to commit, working tree clean
+                        </code></pre>
+                        <a href="https://git-scm.com/docs/git-bisect/pt_BR" target="_blank" rel="noopener"
+                           class="reference" data-id="reference">Documentação oficial: git bisect</a>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Encontrando commits com bug</h1>
+                        <h2><code>git bisect</code></h2>
+                        <p data-id="intro">
+                            Utiliza busca binária para encontrar o <em>commit</em> em que um <em>bug</em> foi
+                            introduzido no projeto
+                        </p>
+
+                        <ol start="5">
+                            <li data-id="li">
+                                Você eventualmente vai chegar até o <em>commit</em> que introduziu o <em>bug</em>
+                            </li>
+                        </ol>
+                        <pre><code class="shell" data-trim>
+                            $ git bisect good
+                            552da6fa8f6fad69197b56a8666a8262b692f403 is the first bad commit
+                            commit 552da6fa8f6fad69197b56a8666a8262b692f403
+                            Author: Vinícius Campitelli
+                            Date: Seg Jan  1 00:00:01 2024 -0300
+
+                            Melhorando UX do "Esqueci a senha"
+
+                            ForgotPassword.php | 10 +++++
+                            1 file changed, 10 insertions(+)
+                        </code></pre>
+                        <a href="https://git-scm.com/docs/git-bisect/pt_BR" target="_blank" rel="noopener"
+                           class="reference" data-id="reference">Documentação oficial: git bisect</a>
+                    </section>
+                </section> <!-- bisect -->
+
+                <section> <!-- reflog -->
+                    <section class="slide-problem">
+                        <span>Problema</span>
+                        <h1>Como recuperar <em>commits</em> perdidos?</h1>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Recuperando commits perdidos</h1>
+                        <h2><code>git reflog</code></h2>
+                        <p>
+                            Toda mudança do <code>HEAD</code> de seu repositório é rastreada <b>localmente</b> através
+                            do <kbd>reflog</kbd>, permitindo recuperar cada um dos passos
+                        </p>
+                        <pre><code class="shell" data-trim data-line-numbers="1-6|8-12|14-15|17-19">
+                            $ echo "Conteúdo antigo do arquivo" > arquivo
+                            $ git add arquivo
+                            $ git commit -m "Criando arquivo"
+                            [main (root-commit) ed2ad40] Criando arquivo
+                             1 file changed, 1 insertion(+)
+                             create mode 100644 arquivo
+                            ⁣
+                            $ echo "Melhorei o arquivo" > arquivo
+                            $ git commit --amend --no-edit
+                            [main 6af9ce0] Criando arquivo
+                             1 file changed, 1 insertion(+)
+                             create mode 100644 arquivo
+                            ⁣
+                            $ git log --oneline
+                            6af9ce0 (HEAD -> main) Criando arquivo
+                            ⁣
+                            $ git reflog
+                            6af9ce0 (HEAD -> main) HEAD@{0}: commit (amend): Criando arquivo
+                            e011977 HEAD@{1}: commit (initial): Criando arquivo
+                        </code></pre>
+                        <a href="https://git-scm.com/docs/git-reflog/pt_BR" target="_blank" rel="noopener"
+                           class="reference">Git - git-reflog Documentation</a>
+                    </section>
+                    <section data-auto-animate>
+                        <h1 class="subtitle">Recuperando commits perdidos</h1>
+                        <h2><code>git reflog</code></h2>
+                        <p>
+                            Toda mudança do <code>HEAD</code> de seu repositório é rastreada <b>localmente</b> através
+                            do <kbd>reflog</kbd>, permitindo recuperar cada um dos passos
+                        </p>
+                        <pre><code class="shell" data-trim data-line-numbers>
+                            $ git reset HEAD@{1}
+                            Unstaged changes after reset:
+                            M	arquivo
+                            ⁣
+                            $ git restore arquivo
+                            $ cat arquivo
+                            Conteúdo antigo do arquivo
+                        </code></pre>
+                        <a href="https://git-scm.com/docs/git-reflog/pt_BR" target="_blank" rel="noopener"
+                           class="reference">Git - git-reflog Documentation</a>
+                    </section>
+                </section> <!-- reflog -->
+
+                <section> <!-- Boas e más práticas -->
+                    <section data-auto-animate data-auto-animate-restart>
+                        <h1>Boas e más práticas</h1>
+                    </section>
+                    <section data-auto-animate>
+                        <h1>Boas e más práticas</h1>
+                        <ul class="margin">
+                            <li>
+                                <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh"
+                                   target="_blank" rel="noopener">Utilize SSH</a> ao invés de HTTP
+                            </li>
+                            <li class="fragment">
+                                Não faça <em>commits</em> direto nas <em>branches</em> principais (<code>main</code>,
+                                <code>master</code>, <code>production</code>, etc); crie sua própria <em>branch</em> e
+                                faça <em>pull requests</em>
+                            </li>
+                            <li class="fragment">
+                                Mantenha <em>branches</em> limpas e resolvendo uma única <em>issue</em>, com bons nomes
+                            </li>
+                            <li class="fragment">
+                                Faça <em>commits</em> atômicos: isto é, que englobem <b>uma única</b> mudança
+                                (<b>uma</b> funcionalidade criada ou <b>um</b> <em>bug</em> corrigido)
+                            </li>
+                            <li class="fragment">
+                                Faça <em>commits</em> frequentes para não perder dados caso aconteça algo (ou para que
+                                outra pessoa possa dar continuidade no seu trabalho)
+                                <ul>
+                                    <li class="fragment">
+                                        Essas duas práticas acima facilitam bastante o uso do <code>git bisect</code>,
+                                        por exemplo
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <section data-auto-animate>
+                        <h1>Boas e más práticas</h1>
+                        <ul class="margin">
+                            <li>
+                                Configure o arquivo <code>.gitignore</code> para evitar subir arquivos de configuração,
+                                valores sensíveis ou outras informações que são relativas a ambientes e não ao
+                                desenvolvimento
+                            </li>
+                            <li class="fragment">
+                                Ao fazer <em>code review</em> de <em>pull requests</em>, seja educado(a)<br>
+                                Dica: utilize <a href="https://www.conventionalcommits.org/pt-br/" target="_blank"
+                                                 rel="noopener">Conventional Commits</a>
+                            </li>
+                            <li class="fragment">
+                                Ao fazer um <em>commit</em>, explique de forma sucinta (mas significativa) o que você
+                                fez<br>
+                                Dica: utilize <a href="https://conventionalcomments.org/" target="_blank"
+                                                 rel="noopener">Conventional Comments</a>
+                            </li>
+                            <li class="fragment">
+                                Bloqueie o uso do <em>force push</em> para não-mantenedores do repositório e,
+                                mesmo assim, não exagere no uso
+                            </li>
+                        </ul>
+                    </section>
+                    <section data-auto-animate>
+                        <h1>Boas e más práticas</h1>
+                        <p>Algumas referências de leitura:</p>
+                        <ul>
+                            <li>
+                                <a href="https://acompiler.com/git-best-practices/" target="_blank" rel="noopener">
+                                    47 Git Best Practices to follow (in 2023) - aCompiler
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://sethrobertson.github.io/GitBestPractices/" target="_blank"
+                                   rel="noopener">Commit Often, Perfect Later, Publish Once: Git Best Practices</a>
+                            </li>
+                            <li>
+                                <a href="https://www.git-tower.com/blog/7-git-mistakes-a-developer-should-avoid/"
+                                   target="_blank" rel="noopener">7 Git Mistakes a Developer Should Avoid</a>
+                            </li>
+                            <li>
+                                <a href="https://dev.to/mauroaccorinti/how-to-get-somebody-fired-using-git-31if"
+                                   target="_blank" rel="noopener">How to get somebody fired using Git</a>
+                            </li>
+                        </ul>
+                    </section>
+                </section> <!-- Boas e más práticas -->
+
+                <section> <!-- Referências -->
+                    <section data-auto-animate data-auto-animate-restart>
+                        <h1>Referências</h1>
+                    </section>
+                    <section data-auto-animate>
+                        <h1>Referências</h1>
+                        <ul>
+                            <li>
+                                <a href="https://www.atlassian.com/br/git/tutorials" target="_blank" rel="noopener">
+                                    Atlassian: Tutoriais do Git
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://git-scm.com/book/pt-br/v2" target="_blank" rel="noopener">
+                                    Git Book
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.git-scm.com/docs/giteveryday" target="_blank" rel="noopener">
+                                    Git
+                                    Everyday
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://githowto.com/pt-BR" target="_blank" rel="noopener">
+                                    Git How To
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.github.com" target="_blank" rel="noopener">
+                                    GitHub Docs
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://githubtraining.github.io/training-manual/" target="_blank"
+                                   rel="noopener">
+                                    GitHub Training Manual
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.gitkraken.com/learn/git/tutorials" target="_blank" rel="noopener">
+                                    GitKraken - Tutorials
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.gitlab.com/" target="_blank" rel="noopener">
+                                    GitLab Docs
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://training.github.com/downloads/pt_BR/github-git-cheat-sheet/"
+                                   target="_blank" rel="noopener">
+                                    GitHub: Git Cheat Sheet
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://initialcommit.com" target="_blank" rel="noopener">
+                                    Initial Commit - Quality resources and tools for developers
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/watch?v=6Czd1Yetaac" target="_blank" rel="noopener">
+                                    Fabio Akita: Entendendo GIT
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
+                </section> <!-- Referências -->
+
+                <section> <!-- Treinamentos in company -->
+                    <h1>Treinamentos in company</h1>
+                    <div class="d-flex cols-2 items-center">
+                        <div class="qrcode-featured-text">
+                            Gostou? Então conheça meus treinamentos corporativos e sob demanda sobre Desenvolvimento,
+                            Segurança da Informação, DevOps, Arquitetura de Sistemas e diversos outros assuntos em
+                            <a href="https://bit.ly/vcampitelli" target="_blank" rel="noopener" class="fw-bold">
+                                viniciuscampitelli.com
+                            </a>
+                        </div>
+                        <div>
+                            <a href="https://bit.ly/vcampitelli" target="_blank" rel="noopener" class="d-block">
+                                <img src="img/qrcode-workshops.png" alt="Workshops" style="height: 300px" class="my-0">
+                            </a>
+                        </div>
+                    </div>
+                </section> <!-- Treinamentos in company -->
+
+                <section> <!-- Obrigado -->
+                    <h2 class="text-center">Obrigado!</h2>
+                    <div class="about-me-links">
+                        <div>
+                            <svg role="img" width="64px" height="64px" viewBox="0 0 24 24"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                                      class="fill"></path>
+                            </svg>
+                            <div>
+                                <p>Slides &amp; GitHub</p>
+                                <a href="https://github.com/vcampitelli" target="_blank" rel="noopener">
+                                    vcampitelli
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <svg role="img" width="64px" height="64px" viewBox="0 0 24 24"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"
+                                      class="fill"></path>
+                            </svg>
+                            <div>
+                                <p><span class="text-strike text-muted">X</span> Twitter</p>
+                                <a href="https://twitter.com/vcampitelli" target="_blank" rel="noopener">
+                                    vcampitelli
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <svg role="img" height="64" viewBox="0 0 74 74" width="64"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path d="M8,72 L64,72 C68.418278,72 72,68.418278 72,64 L72,8 C72,3.581722 68.418278,-8.11624501e-16 64,0 L8,0 C3.581722,8.11624501e-16 -5.41083001e-16,3.581722 0,8 L0,64 C5.41083001e-16,68.418278 3.581722,72 8,72 Z"
+                                          class="fill"/>
+                                    <path d="M62,62 L51.315625,62 L51.315625,43.8021149 C51.315625,38.8127542 49.4197917,36.0245323 45.4707031,36.0245323 C41.1746094,36.0245323 38.9300781,38.9261103 38.9300781,43.8021149 L38.9300781,62 L28.6333333,62 L28.6333333,27.3333333 L38.9300781,27.3333333 L38.9300781,32.0029283 C38.9300781,32.0029283 42.0260417,26.2742151 49.3825521,26.2742151 C56.7356771,26.2742151 62,30.7644705 62,40.051212 L62,62 Z M16.349349,22.7940133 C12.8420573,22.7940133 10,19.9296567 10,16.3970067 C10,12.8643566 12.8420573,10 16.349349,10 C19.8566406,10 22.6970052,12.8643566 22.6970052,16.3970067 C22.6970052,19.9296567 19.8566406,22.7940133 16.349349,22.7940133 Z M11.0325521,62 L21.769401,62 L21.769401,27.3333333 L11.0325521,27.3333333 L11.0325521,62 Z"
+                                          class="fill-bg"/>
+                                </g>
+                            </svg>
+                            <div>
+                                <p>LinkedIn</p>
+                                <a href="https://linkedin.com/in/viniciuscampitelli" target="_blank" rel="noopener">
+                                    Vinícius Campitelli
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section> <!-- Obrigado -->
+			</div>
+		</div>
+
+		<script src="reveal.js/dist/reveal.js"></script>
+		<script src="reveal.js/plugin/highlight/highlight.js"></script>
+		<script src="reveal.js/plugin/notes/notes.js"></script>
+		<script>
+            document.querySelectorAll('img.insert-svg').forEach(($img) => {
+                fetch($img.src).then(response => {
+                    if (!response.ok) {
+                        return;
+                    }
+                    response.text().then(contents => {
+                        const $wrapper = document.createElement('div');
+                        $wrapper.classList.add('svg-wrapper');
+                        if ($img.dataset.id) {
+                            contents = contents.replace("<svg", '<svg data-id="' + encodeURIComponent($img.dataset.id) + '"');
+                        }
+                        $wrapper.innerHTML = contents.replace('<?xml version="1.0" encoding="UTF-8"?>', '');
+                        $img.parentNode.replaceChild($wrapper, $img);
+                    });
+                });
+            });
+
+
+            Reveal.initialize({
+				hash: true,
+				mouseWheel: true,
+				overview: false,
+				history: true,
+				plugins: [ RevealHighlight, RevealNotes ],
+				slideNumber: 'c/t',
+			});
+
+            Reveal.configure({
+                keyboard: {
+                    38: 'prev',
+                    40: 'next',
+                },
+            });
+		</script>
+	</body>
+</html>
