@@ -273,3 +273,13 @@ svg {
   fill: #ec0000 !important;
   stroke: #ec0000 !important;
 }
+.fragment-fill-blue-then-red {
+  opacity: 0;
+}
+.fragment-fill-blue-then-red.visible.current-fragment {
+  fill: #0000ec !important;
+  stroke: #0000ec !important;
+}
+.fragment-pin-red.visible:not(.current-fragment) {
+  stroke: #ec0000 !important;
+}

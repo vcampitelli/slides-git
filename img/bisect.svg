@@ -1,13 +1,16 @@
 <svg id="mermaid-svg" width="681" xmlns="http://www.w3.org/2000/svg" height="99" viewBox="-96 -19 454 66" role="graphics-document document" aria-roledescription="gitGraph" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <style>#mermaid-svg{font-family:Inter,sans-serif;font-size:16px;fill:#333;}#mermaid-svg .error-icon{fill:#552222;}#mermaid-svg .error-text{fill:#552222;stroke:#552222;}#mermaid-svg .edge-thickness-normal{stroke-width:2px;}#mermaid-svg .edge-thickness-thick{stroke-width:3.5px;}#mermaid-svg .edge-pattern-solid{stroke-dasharray:0;}#mermaid-svg .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-svg .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-svg .marker{fill:#333333;stroke:#333333;}#mermaid-svg .marker.cross{stroke:#333333;}#mermaid-svg svg{font-family:Inter,sans-serif;font-size:16px;}#mermaid-svg .commit-id,#mermaid-svg .commit-msg,#mermaid-svg .branch-label{fill:lightgrey;color:lightgrey;font-family:'trebuchet ms',verdana,arial,sans-serif;font-family:var(--mermaid-font-family);}#mermaid-svg .branch-label0{fill:#ffffff;}#mermaid-svg .commit0{stroke:#999;fill:#999;}#mermaid-svg .commit-highlight0{stroke:hsl(60, 100%, 3.7254901961%);fill:hsl(60, 100%, 3.7254901961%);}#mermaid-svg .label0{fill:hsl(240, 100%, 46.2745098039%);}#mermaid-svg .arrow0{stroke:#999;}#mermaid-svg .branch-label1{fill:black;}#mermaid-svg .commit1{stroke:hsl(60, 100%, 43.5294117647%);fill:hsl(60, 100%, 43.5294117647%);}#mermaid-svg .commit-highlight1{stroke:rgb(0, 0, 160.5);fill:rgb(0, 0, 160.5);}#mermaid-svg .label1{fill:hsl(60, 100%, 43.5294117647%);}#mermaid-svg .arrow1{stroke:hsl(60, 100%, 43.5294117647%);}#mermaid-svg .branch-label2{fill:black;}#mermaid-svg .commit2{stroke:hsl(80, 100%, 46.2745098039%);fill:hsl(80, 100%, 46.2745098039%);}#mermaid-svg .commit-highlight2{stroke:rgb(48.8333333334, 0, 146.5000000001);fill:rgb(48.8333333334, 0, 146.5000000001);}#mermaid-svg .label2{fill:hsl(80, 100%, 46.2745098039%);}#mermaid-svg .arrow2{stroke:hsl(80, 100%, 46.2745098039%);}#mermaid-svg .branch-label3{fill:#ffffff;}#mermaid-svg .commit3{stroke:hsl(210, 100%, 46.2745098039%);fill:hsl(210, 100%, 46.2745098039%);}#mermaid-svg .commit-highlight3{stroke:rgb(146.5000000001, 73.2500000001, 0);fill:rgb(146.5000000001, 73.2500000001, 0);}#mermaid-svg .label3{fill:hsl(210, 100%, 46.2745098039%);}#mermaid-svg .arrow3{stroke:hsl(210, 100%, 46.2745098039%);}#mermaid-svg .branch-label4{fill:black;}#mermaid-svg .commit4{stroke:hsl(180, 100%, 46.2745098039%);fill:hsl(180, 100%, 46.2745098039%);}#mermaid-svg .commit-highlight4{stroke:rgb(146.5000000001, 0, 0);fill:rgb(146.5000000001, 0, 0);}#mermaid-svg .label4{fill:hsl(180, 100%, 46.2745098039%);}#mermaid-svg .arrow4{stroke:hsl(180, 100%, 46.2745098039%);}#mermaid-svg .branch-label5{fill:black;}#mermaid-svg .commit5{stroke:hsl(150, 100%, 46.2745098039%);fill:hsl(150, 100%, 46.2745098039%);}#mermaid-svg .commit-highlight5{stroke:rgb(146.5000000001, 0, 73.2500000001);fill:rgb(146.5000000001, 0, 73.2500000001);}#mermaid-svg .label5{fill:hsl(150, 100%, 46.2745098039%);}#mermaid-svg .arrow5{stroke:hsl(150, 100%, 46.2745098039%);}#mermaid-svg .branch-label6{fill:black;}#mermaid-svg .commit6{stroke:hsl(300, 100%, 46.2745098039%);fill:hsl(300, 100%, 46.2745098039%);}#mermaid-svg .commit-highlight6{stroke:rgb(0, 146.5000000001, 0);fill:rgb(0, 146.5000000001, 0);}#mermaid-svg .label6{fill:hsl(300, 100%, 46.2745098039%);}#mermaid-svg .arrow6{stroke:hsl(300, 100%, 46.2745098039%);}#mermaid-svg .branch-label7{fill:black;}#mermaid-svg .commit7{stroke:hsl(0, 100%, 46.2745098039%);fill:hsl(0, 100%, 46.2745098039%);}#mermaid-svg .commit-highlight7{stroke:rgb(0, 146.5000000001, 146.5000000001);fill:rgb(0, 146.5000000001, 146.5000000001);}#mermaid-svg .label7{fill:hsl(0, 100%, 46.2745098039%);}#mermaid-svg .arrow7{stroke:hsl(0, 100%, 46.2745098039%);}#mermaid-svg .branch{stroke-width:1;stroke:#333333;stroke-dasharray:2;}#mermaid-svg .commit-label-score{font-size:12px;fill:#000021;}#mermaid-svg .commit-label{font-size:10px;fill:#000021;}#mermaid-svg .commit-label-bkg{font-size:12px;fill:#ffffde;opacity:0.5;}#mermaid-svg .tag-label{font-size:16px;fill:#131300;}#mermaid-svg .tag-label-bkg{fill:#ECECFF;stroke:hsl(240, 60%, 86.2745098039%);}#mermaid-svg .tag-hole{fill:#333;}#mermaid-svg .commit-merge{stroke:#ECECFF;fill:#ECECFF;}#mermaid-svg .commit-reverse{stroke:#ECECFF;fill:#ECECFF;stroke-width:3;}#mermaid-svg .commit-highlight-inner{stroke:#ECECFF;fill:#ECECFF;}#mermaid-svg .arrow{stroke-width:8;stroke-linecap:round;fill:none;}#mermaid-svg .gitTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-svg :root{--mermaid-font-family:Inter,sans-serif;}</style>
+    <style>
+        #mermaid-svg{font-family:Inter,sans-serif;font-size:16px;fill:#333;}#mermaid-svg .error-icon{fill:#552222;}#mermaid-svg .error-text{fill:#552222;stroke:#552222;}#mermaid-svg .edge-thickness-normal{stroke-width:2px;}#mermaid-svg .edge-thickness-thick{stroke-width:3.5px;}#mermaid-svg .edge-pattern-solid{stroke-dasharray:0;}#mermaid-svg .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-svg .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-svg .marker{fill:#333333;stroke:#333333;}#mermaid-svg .marker.cross{stroke:#333333;}#mermaid-svg svg{font-family:Inter,sans-serif;font-size:16px;}#mermaid-svg .commit-id,#mermaid-svg .commit-msg,#mermaid-svg .branch-label{fill:lightgrey;color:lightgrey;font-family:'trebuchet ms',verdana,arial,sans-serif;font-family:var(--mermaid-font-family);}#mermaid-svg .branch-label0{fill:#ffffff;}#mermaid-svg .commit0{stroke:hsl(240, 20%, 46.2745098039%);fill:hsl(240, 20%, 46.2745098039%);}#mermaid-svg .commit-highlight0{stroke:hsl(60, 100%, 3.7254901961%);fill:hsl(60, 100%, 3.7254901961%);}#mermaid-svg .label0{fill:hsl(240, 100%, 46.2745098039%);}#mermaid-svg .arrow0{stroke:hsl(240, 20%, 46.2745098039%);}#mermaid-svg .branch-label1{fill:black;}#mermaid-svg .commit1{stroke:hsl(60, 100%, 43.5294117647%);fill:hsl(60, 100%, 43.5294117647%);}#mermaid-svg .commit-highlight1{stroke:rgb(0, 0, 160.5);fill:rgb(0, 0, 160.5);}#mermaid-svg .label1{fill:hsl(60, 100%, 43.5294117647%);}#mermaid-svg .arrow1{stroke:hsl(60, 100%, 43.5294117647%);}#mermaid-svg .branch-label2{fill:black;}#mermaid-svg .commit2{stroke:hsl(80, 100%, 46.2745098039%);fill:hsl(80, 100%, 46.2745098039%);}#mermaid-svg .commit-highlight2{stroke:rgb(48.8333333334, 0, 146.5000000001);fill:rgb(48.8333333334, 0, 146.5000000001);}#mermaid-svg .label2{fill:hsl(80, 100%, 46.2745098039%);}#mermaid-svg .arrow2{stroke:hsl(80, 100%, 46.2745098039%);}#mermaid-svg .branch-label3{fill:#ffffff;}#mermaid-svg .commit3{stroke:hsl(210, 100%, 46.2745098039%);fill:hsl(210, 100%, 46.2745098039%);}#mermaid-svg .commit-highlight3{stroke:rgb(146.5000000001, 73.2500000001, 0);fill:rgb(146.5000000001, 73.2500000001, 0);}#mermaid-svg .label3{fill:hsl(210, 100%, 46.2745098039%);}#mermaid-svg .arrow3{stroke:hsl(210, 100%, 46.2745098039%);}#mermaid-svg .branch-label4{fill:black;}#mermaid-svg .commit4{stroke:hsl(180, 100%, 46.2745098039%);fill:hsl(180, 100%, 46.2745098039%);}#mermaid-svg .commit-highlight4{stroke:rgb(146.5000000001, 0, 0);fill:rgb(146.5000000001, 0, 0);}#mermaid-svg .label4{fill:hsl(180, 100%, 46.2745098039%);}#mermaid-svg .arrow4{stroke:hsl(180, 100%, 46.2745098039%);}#mermaid-svg .branch-label5{fill:black;}#mermaid-svg .commit5{stroke:hsl(150, 100%, 46.2745098039%);fill:hsl(150, 100%, 46.2745098039%);}#mermaid-svg .commit-highlight5{stroke:rgb(146.5000000001, 0, 73.2500000001);fill:rgb(146.5000000001, 0, 73.2500000001);}#mermaid-svg .label5{fill:hsl(150, 100%, 46.2745098039%);}#mermaid-svg .arrow5{stroke:hsl(150, 100%, 46.2745098039%);}#mermaid-svg .branch-label6{fill:black;}#mermaid-svg .commit6{stroke:hsl(300, 100%, 46.2745098039%);fill:hsl(300, 100%, 46.2745098039%);}#mermaid-svg .commit-highlight6{stroke:rgb(0, 146.5000000001, 0);fill:rgb(0, 146.5000000001, 0);}#mermaid-svg .label6{fill:hsl(300, 100%, 46.2745098039%);}#mermaid-svg .arrow6{stroke:hsl(300, 100%, 46.2745098039%);}#mermaid-svg .branch-label7{fill:black;}#mermaid-svg .commit7{stroke:hsl(0, 100%, 46.2745098039%);fill:hsl(0, 100%, 46.2745098039%);}#mermaid-svg .commit-highlight7{stroke:rgb(0, 146.5000000001, 146.5000000001);fill:rgb(0, 146.5000000001, 146.5000000001);}#mermaid-svg .label7{fill:hsl(0, 100%, 46.2745098039%);}#mermaid-svg .arrow7{stroke:hsl(0, 100%, 46.2745098039%);}#mermaid-svg .branch{stroke-width:1;stroke:#333333;stroke-dasharray:2;}#mermaid-svg .commit-label-score{font-size:12px;fill:#eee;}#mermaid-svg .commit-label{font-family:"JetBrains Mono",monospace;font-size:10px;fill:#fff;}#mermaid-svg .tag-label{font-size:16px;fill:#131300;}#mermaid-svg .tag-label-bkg{fill:#ECECFF;stroke:hsl(240, 60%, 86.2745098039%);}#mermaid-svg .tag-hole{fill:#333;}#mermaid-svg .commit-merge{stroke:#ECECFF;fill:#ECECFF;}#mermaid-svg .commit-reverse{stroke:#ECECFF;fill:#ECECFF;stroke-width:3;}#mermaid-svg .commit-highlight-inner{stroke:#ECECFF;fill:#ECECFF;}#mermaid-svg .arrow{stroke-width:8;stroke-linecap:round;fill:none;}#mermaid-svg .gitTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-svg :root{--mermaid-font-family:Inter,sans-serif;}
+        #mermaid-svg .commit-pin{stroke:#8888aa;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+    </style>
     <g/>
     <g class="commit-bullets"/>
     <g class="commit-labels"/>
     <g>
-        <line x1="0" y1="0" x2="350" y2="0" class="branch branch0"/>
-        <rect class="branchLabelBkg label0" rx="4" ry="4" x="-69" y="-1.5" width="53" height="23" transform="translate(-19, -9.5)"/>
+        <line x1="0" y1="5" x2="350" y2="5" class="branch branch0"/>
+        <rect class="branchLabelBkg label0" rx="4" ry="4" x="-69" y="3.5" width="53" height="23" transform="translate(-19, -9.5)"/>
         <g class="branchLabel">
-            <g class="label branch-label0" transform="translate(-79, -10.5)">
+            <g class="label branch-label0" transform="translate(-79, -5.5)">
                 <text>
                     <tspan xml:space="preserve" dy="1em" x="0" class="row">main</tspan>
                 </text>
@@ -15,58 +18,58 @@
         </g>
     </g>
     <g class="commit-arrows">
-        <path d="M 10 0 L 60 0" class="arrow arrow0"/>
-        <path d="M 60 0 L 110 0" class="arrow arrow0"/>
-        <path d="M 110 0 L 160 0" class="arrow arrow0"/>
-        <path d="M 160 0 L 210 0" class="arrow arrow0"/>
-        <path d="M 210 0 L 260 0" class="arrow arrow0"/>
-        <path d="M 260 0 L 310 0" class="arrow arrow0"/>
+        <path d="M 10 5 L 60 5" class="arrow arrow0"/>
+        <path d="M 60 5 L 110 5" class="arrow arrow0"/>
+        <path d="M 110 5 L 160 5" class="arrow arrow0"/>
+        <path d="M 160 5 L 210 5" class="arrow arrow0"/>
+        <path d="M 210 5 L 260 5" class="arrow arrow0"/>
+        <path d="M 260 5 L 310 5" class="arrow arrow0"/>
     </g>
     <g class="commit-bullets">
-        <circle cx="10" cy="0" r="10" class="commit m1 commit0 fragment custom fragment-fill-green-past" data-fragment-index="3"/>
-        <circle cx="60" cy="0" r="10" class="commit m2 commit0 fragment custom fragment-fill-green" data-fragment-index="7"/>
-        <circle cx="110" cy="0" r="10" class="commit m3 commit0 fragment custom fragment-fill-green" data-fragment-index="7"/>
-        <circle cx="160" cy="0" r="10" class="commit m4 commit0 fragment custom fragment-fill-green-past" data-fragment-index="5"/>
-        <circle cx="210" cy="0" r="10" class="commit m5 commit0 fragment custom fragment-fill-green-past" data-fragment-index="8"/>
-        <circle cx="260" cy="0" r="10" class="commit m6 commit0 fragment custom fragment-fill-red-past" data-fragment-index="10"/>
-        <circle cx="310" cy="0" r="10" class="commit m7 commit0 fragment custom fragment-fill-red-past" data-fragment-index="1"/>
+        <circle cx="10" cy="5" r="10" class="commit m1 commit0 fragment custom fragment-fill-green-past" data-fragment-index="3"/>
+        <circle cx="60" cy="5" r="10" class="commit m2 commit0 fragment custom fragment-fill-green" data-fragment-index="7"/>
+        <circle cx="110" cy="5" r="10" class="commit m3 commit0 fragment custom fragment-fill-green" data-fragment-index="7"/>
+        <circle cx="160" cy="5" r="10" class="commit m4 commit0 fragment custom fragment-fill-green-past" data-fragment-index="5"/>
+        <circle cx="210" cy="5" r="10" class="commit m5 commit0 fragment custom fragment-fill-green-past" data-fragment-index="8"/>
+        <circle cx="260" cy="5" r="10" class="commit m6 commit0 fragment custom fragment-fill-red-past" data-fragment-index="10"/>
+        <circle cx="310" cy="5" r="10" class="commit m7 commit0 fragment custom fragment-fill-red-past" data-fragment-index="1"/>
+    </g>
+    <g>
+        <path d="M10 -20 V-10 M10 -10 L6 -15 M10 -10 L14 -15" class="commit-pin fragment fade-in-then-out" data-fragment-index="3" />
+        <path d="M160 -20 V-10 M160 -10 L156 -15 M160 -10 L164 -15" class="commit-pin fragment fade-in-then-out" data-fragment-index="5" />
+        <path d="M210 -20 V-10 M210 -10 L206 -15 M210 -10 L214 -15" class="commit-pin fragment fade-in-then-out" data-fragment-index="8" />
+        <path d="M260 -20 V-10 M260 -10 L256 -15 M260 -10 L264 -15" class="commit-pin fragment fragment-pin-red" data-fragment-index="10" />
+        <path d="M310 -20 V-10 M310 -10 L306 -15 M310 -10 L314 -15" class="commit-pin fragment fade-in-then-out" data-fragment-index="1" />
     </g>
     <g class="commit-labels">
         <g>
-            <text x="6" y="3" class="commit-label">S</text>
-            <text x="56" y="3" class="commit-label">T</text>
-            <text x="106" y="3" class="commit-label">Q</text>
-            <text x="156" y="3" class="commit-label">Q</text>
-            <text x="206" y="3" class="commit-label">S</text>
-            <text x="256" y="3" class="commit-label">S</text>
-            <text x="306" y="3" class="commit-label">D</text>
+            <text x="7" y="8" class="commit-label">S</text>
+            <text x="57" y="8" class="commit-label">T</text>
+            <text x="107" y="8" class="commit-label">Q</text>
+            <text x="157" y="8" class="commit-label">Q</text>
+            <text x="207" y="8" class="commit-label">S</text>
+            <text x="257" y="8" class="commit-label">S</text>
+            <text x="307" y="8" class="commit-label">D</text>
         </g>
-        <g transform="translate(-17.4809375, 23.5303125) rotate(-45, 0, 0)" class="fragment" data-fragment-index="4">
-            <rect class="commit-label-bkg" x="-0.1328125" y="13.5" width="32.265625" height="16"/>
+        <g transform="translate(-17, 28) rotate(-45, 0, 0)" class="fragment" data-fragment-index="4">
             <text x="1.8671875" y="25" class="commit-label-score">Bom</text>
         </g>
-        <g transform="translate(-17.4809375, 23.5303125) rotate(-45, 50, 0)" class="fragment" data-fragment-index="7">
-            <rect class="commit-label-bkg" x="49.8671875" y="13.5" width="32.265625" height="16"/>
+        <g transform="translate(-17, 28) rotate(-45, 50, 0)" class="fragment" data-fragment-index="7">
             <text x="51.8671875" y="25" class="commit-label-score">Bom</text>
         </g>
-        <g transform="translate(-17.4809375, 23.5303125) rotate(-45, 100, 0)" class="fragment" data-fragment-index="7">
-            <rect class="commit-label-bkg" x="99.8671875" y="13.5" width="32.265625" height="16"/>
+        <g transform="translate(-17, 28) rotate(-45, 100, 0)" class="fragment" data-fragment-index="7">
             <text x="101.8671875" y="25" class="commit-label-score">Bom</text>
         </g>
-        <g transform="translate(-17.74515625, 23.766718749999999) rotate(-45, 150, 0)" class="fragment" data-fragment-index="6">
-            <rect class="commit-label-bkg" x="149.51953125" y="13.5" width="32.9609375" height="16"/>
+        <g transform="translate(-17, 28) rotate(-45, 150, 0)" class="fragment" data-fragment-index="6">
             <text x="151.51953125" y="25" class="commit-label-score">Bom</text>
         </g>
-        <g transform="translate(-17.4809375, 23.5303125) rotate(-45, 200, 0)" class="fragment" data-fragment-index="9">
-            <rect class="commit-label-bkg" x="199.8671875" y="13.5" width="32.265625" height="16"/>
+        <g transform="translate(-17, 28) rotate(-45, 200, 0)" class="fragment" data-fragment-index="9">
             <text x="201.8671875" y="25" class="commit-label-score">Bom</text>
         </g>
-        <g transform="translate(-17.4809375, 23.5303125) rotate(-45, 250, 0)" class="fragment" data-fragment-index="11">
-            <rect class="commit-label-bkg" x="249.8671875" y="13.5" width="32.265625" height="16"/>
+        <g transform="translate(-17, 28) rotate(-45, 250, 0)" class="fragment" data-fragment-index="11">
             <text x="251.8671875" y="25" class="commit-label-score">Ruim</text>
         </g>
-        <g transform="translate(-17.74515625, 23.766718749999999) rotate(-45, 300, 0)" class="fragment" data-fragment-index="2">
-            <rect class="commit-label-bkg" x="299.51953125" y="13.5" width="32.9609375" height="16"/>
+        <g transform="translate(-17, 28) rotate(-45, 300, 0)" class="fragment" data-fragment-index="2">
             <text x="301.51953125" y="25" class="commit-label-score">Ruim</text>
         </g>
     </g>
